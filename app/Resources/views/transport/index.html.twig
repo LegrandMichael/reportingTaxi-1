@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Transports list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transport in transports %}
+            <tr>
+                <td><a href="{{ path('admin_transport_show', { 'id': transport.id }) }}">{{ transport.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_transport_show', { 'id': transport.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_transport_edit', { 'id': transport.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_transport_new') }}">Create a new transport</a>
+        </li>
+    </ul>
+{% endblock %}

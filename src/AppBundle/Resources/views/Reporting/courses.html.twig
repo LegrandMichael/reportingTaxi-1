@@ -1,0 +1,34 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Reporting:courses{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Reporting:courses page</h1>
+<p>
+    Vous avez cherchez {{ chauffeurSearch }}
+</p>
+
+{{ form_start(form) }}
+    {{ form_row(form.chauffeurSearch, { 'label': ' ' }) }}
+    {{ form_row(form.submit, { 'label': 'Rechercher' }) }}
+{{ form_end(form) }}
+
+<table>
+    <tr>
+        <th>Id Course</th>
+        <th>Chauffeur</th>
+        <th>Départ</th>
+        <th>Arrivée</th>
+        <th>Distance</th>
+    </tr>
+    {% for course in courses %}
+        <tr>
+            <td><a href="{{ path('admin_course_show', { 'id': course.id }) }}">{{ course.id }}</a></td>
+            <td>{{ course.chauffeur }}</td>
+            <td>{{ course.adresseDepart }}</td>
+            <td>{{ course.adresseArrivee }}</td>
+            <td>{{ course.distance }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
